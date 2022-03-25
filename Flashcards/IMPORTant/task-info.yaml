@@ -641,6 +641,60 @@ files:
     \                \"Moscow\",\n                \"London\",\n                \"\
     Abuja\",\n                \"Berlin\"\n        );\n    }\n    \n}\n"
   learner_created: false
+- name: src/flashcards/Card.java
+  visible: true
+  text: |
+    package flashcards;
+
+    public class Card {
+        private final String term;
+        private String definition;
+        private int wrongAnswers;
+
+        public Card(String term, String definition) {
+            this.term = term;
+            this.definition = definition;
+        }
+
+        public Card(String term, String definition, int wrongAnswers) {
+            this.term = term;
+            this.definition = definition;
+            this.wrongAnswers = wrongAnswers;
+        }
+
+        public void setDefinition(String definition) {
+            this.definition = definition;
+        }
+
+        public void incrementWrongAnswers() {
+            wrongAnswers++;
+        }
+
+        public void resetWrongAnswers() {
+            wrongAnswers = 0;
+        }
+
+        public void setWrongAnswers(int wrongAnswers) {
+            this.wrongAnswers = wrongAnswers;
+        }
+
+        public String getTerm() {
+            return term;
+        }
+
+        public String getDefinition() {
+            return definition;
+        }
+
+        public int getWrongAnswersCount() {
+            return wrongAnswers;
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5349#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Fri, 25 Mar 2022 09:33:37 UTC
 record: -1

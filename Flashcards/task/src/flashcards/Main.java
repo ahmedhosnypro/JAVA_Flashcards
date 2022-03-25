@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -14,7 +15,31 @@ public class Main {
     static ArrayList<Card> cards = new ArrayList<>();
 
     public static void main(String[] args) {
-        startAction();
+        if (args.length > 0) {
+            String importPath = "";
+            String exportPath = "";
+            for (int i = 0; i < args.length; i += 2) {
+                if (args[i].equalsIgnoreCase("-import")) {
+                    importPath = args[i + 1];
+                }
+                if (args[i].equalsIgnoreCase("-export")) {
+                    exportPath = args[i + 1];
+                }
+            }
+            if (importPath.length() > 0 && exportPath.length() > 0) {
+                importCards(importPath);
+                startAction();
+                exportCards(exportPath);
+            } else if (importPath.length() > 0) {
+                importCards(importPath);
+                startAction();
+            } else if (exportPath.length() > 0) {
+                startAction();
+                exportCards(exportPath);
+            }
+        } else {
+            startAction();
+        }
     }
 
     private static void startAction() {
@@ -30,11 +55,15 @@ public class Main {
                 startAction();
             }
             case "import" -> {
-                importCards();
+                print("File name:");
+                String filePath = read();
+                importCards(filePath);
                 startAction();
             }
             case "export" -> {
-                exportCards();
+                print("File name:");
+                String filePath = read();
+                exportCards(filePath);
                 startAction();
             }
             case "ask" -> {
@@ -104,12 +133,10 @@ public class Main {
         }
     }
 
-    private static void importCards() {
+    private static void importCards(String filePath) {
         int importedCards = 0;
-        print("File name:");
-        String fileName = read();
-        File file = new File(fileName);
 
+        File file = new File(filePath);
         if (file.exists()) {
             try (Scanner fileScanner = new Scanner(file)) {
                 while (fileScanner.hasNext()) {
@@ -145,11 +172,10 @@ public class Main {
         return 1;
     }
 
-    private static void exportCards() {
+    private static void exportCards(String filePath) {
         int exportCards = 0;
-        print("File name:");
-        String fileName = read();
-        File file = new File(fileName);
+
+        File file = new File(filePath);
         try (FileWriter writer = new FileWriter(file)) {
             int index = 0;
             for (var card : cards) {
