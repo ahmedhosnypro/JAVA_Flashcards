@@ -825,6 +825,15 @@ files:
 
     }
   learner_created: false
+- name: capitals.txt
+  visible: true
+  learner_created: true
+- name: capitalsNew.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5347#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 25 Mar 2022 04:49:38 UTC
 record: -1
