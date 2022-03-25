@@ -596,6 +596,12 @@ files:
     \   \"London\",\n                \"Abuja\",\n                \"Berlin\"\n    \
     \    );\n    }\n    \n}\n\n\n\n\n"
   learner_created: false
+- name: src/flashcards/Card.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5348#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 25 Mar 2022 08:58:50 UTC
 record: -1
